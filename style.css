@@ -555,7 +555,7 @@ section h2::before {
    Footer - Copyright
    ======================================== */
 
-.footer {
+..footer {
     text-align: center;
     padding: var(--space-8) var(--space-4);
     margin-top: var(--space-12);
@@ -563,8 +563,16 @@ section h2::before {
             rgba(227, 242, 253, 0.6) 0%,
             rgba(255, 255, 255, 0.95) 100%);
     backdrop-filter: blur(10px);
-    border: 2px solid var(--border-light);
-    border-radius: var(--radius-lg);
+
+    /* רק למעלה ולמטה מסגרת, בלי צדדים */
+    border-top: 2px solid var(--border-light);
+    border-bottom: 2px solid var(--border-light);
+    border-left: none;
+    border-right: none;
+
+    /* ביטול פינות מעוגלות */
+    border-radius: 0;
+
     box-shadow: var(--shadow-sm);
 }
 
@@ -682,3 +690,4 @@ html {
     -webkit-text-fill-color: transparent;
     background-clip: text;
 }
+
