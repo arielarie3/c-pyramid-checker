@@ -10,12 +10,15 @@
 </head>
 
 <body>
-    <!-- פס עליון עם הלוגו -->
-    <div class="top-logo-bar">
-        <div class="logo-wrapper">
+    <!-- מודל פתיחה עם הלוגו -->
+    <div id="welcomeModal" class="welcome-modal">
+        <div class="welcome-modal-inner">
             <img src="logo.png"
                  alt="This site was built by the legendary Ariel Arie"
-                 class="site-logo">
+                 class="welcome-logo">
+            <button id="enterAppButton" class="enter-app-button">
+                מעבר למערכת הבדיקה
+            </button>
         </div>
     </div>
 
@@ -109,6 +112,19 @@ int main() {
         <p>© כל הזכויות שמורות לאריאל אריה האגדי והתותח 🚀</p>
         <p>2025 בואכה 2026</p>
     </div>
+
+    <!-- סקריפט קטן לסגירת המודל -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            var btn = document.getElementById('enterAppButton');
+            var modal = document.getElementById('welcomeModal');
+            if (btn && modal) {
+                btn.addEventListener('click', function () {
+                    modal.classList.add('hidden-modal');
+                });
+            }
+        });
+    </script>
 </body>
 
 </html>
