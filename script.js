@@ -471,6 +471,11 @@ function displayResults(testResults, score, feedback) {
 
         tbody.appendChild(row);
     });
+
+    // גלילה אוטומטית לתוצאות
+    setTimeout(() => {
+        resultsSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }, 100);
 }
 
 function displayError(errorMessage) {
@@ -483,4 +488,9 @@ function displayError(errorMessage) {
 
     document.getElementById('scoreValue').textContent = '0';
     document.getElementById('scoreFeedback').textContent = 'אירעה שגיאה בזמן הבדיקה.';
+
+    // גלילה אוטומטית לתוצאות
+    setTimeout(() => {
+        resultsSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }, 100);
 }
