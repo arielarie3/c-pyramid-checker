@@ -93,11 +93,12 @@ body {
    Container
    ======================================== */
 
-.container {
+..container {
     max-width: 1100px;
     margin: 0 auto;
-    padding: var(--space-10) var(--space-4);
+    padding: var(--space-6) var(--space-4) var(--space-10); /* פחות רווח מלמעלה */
 }
+
 
 /* ========================================
    Logo Hero (התמונה הגדולה למעלה)
@@ -105,22 +106,25 @@ body {
 
 .logo-hero {
     max-width: 1100px;
-    margin: 0 auto var(--space-8);
-    padding: var(--space-4);
+    margin: 0 auto var(--space-4); /* רווח קטן יותר מתחת לתמונה */
+    padding: 0;                    /* ביטול padding מיותר */
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
 .logo-hero-image {
-    width: 100%;
-    max-width: 900px;   /* שולט כמה גדול הלוגו */
+    display: block;
+    margin: 0 auto;
+    max-width: 100%;
     height: auto;
+    max-height: 75vh;     /* בערך 75% מגובה המסך */
     object-fit: contain;
     border-radius: 24px;
     box-shadow: var(--shadow-lg);
     background: #ffffff;
 }
+
 
 /* במסכים קטנים אפשר קצת להקטין את המרווחים */
 @media (max-width: 640px) {
@@ -146,11 +150,12 @@ header {
     backdrop-filter: blur(10px);
     border: 2px solid var(--border);
     border-radius: var(--radius-xl);
-    padding: var(--space-12) var(--space-10);
-    margin-bottom: var(--space-10);
+    padding: var(--space-8) var(--space-8);   /* מעט פחות גבוה */
+    margin: var(--space-4) 0 var(--space-10); /* פחות רווח מעל לתמונה */
     text-align: center;
     box-shadow: var(--shadow-md);
 }
+
 
 header h1 {
     font-size: 2.25rem;
@@ -656,3 +661,4 @@ section h2::before {
 html {
     scroll-behavior: smooth;
 }
+
