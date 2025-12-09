@@ -630,7 +630,8 @@ section h2::before {
     text-align: center;
     padding: var(--space-8) var(--space-4);
     margin: var(--space-12) auto var(--space-8);
-    max-width: 900px;
+    max-width: 1100px;
+    margin: 0 auto;
     background: linear-gradient(135deg,
             rgba(227, 242, 253, 0.6) 0%,
             rgba(255, 255, 255, 0.95) 100%);
@@ -716,4 +717,5 @@ section h2::before {
 html {
     scroll-behavior: smooth;
 }
+
 
