@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="בודק אוטומטי לתרגיל פירמידה בשפת C - קבל ציון ומשוב מיידי על הקוד שלך">
+    <title>בודק אוטומטי - תרגיל פירמידה ב-C</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            
+            <p class="subtitle">העלה את הקוד שלך וקבל ציון ומשוב מיידי</p>
+        </header>
+
+        <section class="exercise-description">
+            <h2>תיאור התרגיל</h2>
+            <div class="description-content">
+                <p><strong>המטרה:</strong> כתוב תוכנית ב-C שמדפיסה פירמידה של כוכביות.</p>
+                <ul>
+                    <li>התוכנית קוראת מספר שלם חיובי מהמשתמש</li>
+                    <li>אם המספר אינו חיובי (≤ 0), התוכנית מבקשת קלט חדש (חוזר עד שמקבלים מספר חיובי)</li>
+                    <li>לאחר קבלת מספר תקין n, התוכנית מדפיסה פירמידה בת n שורות</li>
+                    <li>בשורה i (מבוסס 1): יהיו (n - i) רווחים מובילים, ואחריהם i כוכביות מופרדות ברווח אחד</li>
+                </ul>
+                <div class="example">
+                    <strong>דוגמה עבור קלט 4:</strong>
+                    <pre dir="ltr">   *
+  * *
+ * * *
+* * * *</pre>
+                </div>
+            </div>
+        </section>
+
+        <section class="code-editor-section">
+            <h2>הדבק את הקוד שלך כאן</h2>
+            <textarea id="codeEditor" dir="ltr" placeholder="// הדבק את הקוד שלך ב-C כאן...
+#include <stdio.h>
+
+int main() {
+    // הקוד שלך...
+    return 0;
+}"></textarea>
+        </section>
+
+        <div class="actions">
+            <button id="runTests" class="run-button">▶️ הרץ בדיקות</button>
+            <div id="loadingIndicator" class="loading-indicator hidden">
+                <div class="spinner"></div>
+                <span>מריץ בדיקות...</span>
+            </div>
+        </div>
+
+        <section id="resultsSection" class="results-section hidden">
+            <h2>תוצאות הבדיקה</h2>
+            
+            <div id="compilationResult" class="compilation-result">
+                <h3>תוצאת קומפילציה</h3>
+                <div id="compilationOutput" class="output-box"></div>
+            </div>
+
+            <div class="score-panel" id="scorePanel">
+                <div class="score-circle">
+                    <span id="scoreValue">0</span>
+                    <span class="score-max">/100</span>
+                </div>
+                <div id="scoreFeedback" class="score-feedback"></div>
+            </div>
+
+            <div class="test-results">
+                <h3>מקרי בדיקה</h3>
+                <table id="testResultsTable">
+                    <thead>
+                        <tr>
+                            <th>מס'</th>
+                            <th>שם הבדיקה</th>
+                            <th>קלט</th>
+                            <th>תוצאה</th>
+                            <th>פרטים</th>
+                        </tr>
+                    </thead>
+                    <tbody id="testResultsBody">
+                    </tbody>
+                </table>
+            </div>
+        </section>
+    </div>
+
+   <!-- JSCPP C++ Interpreter Library -->
+<script src="https://cdn.jsdelivr.net/npm/JSCPP@2.0.6/dist/JSCPP.es5.min.js"></script>
+<script src="script.js"></script>
+
+</body>
+</html>
