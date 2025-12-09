@@ -90,6 +90,35 @@ body {
 }
 
 /* ========================================
+   Top logo bar
+   ======================================== */
+
+.top-logo-bar {
+    padding: var(--space-6) var(--space-4) var(--space-2);
+    text-align: center;
+}
+
+.logo-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.site-logo {
+    max-width: 420px;      /* לוגו גדול יותר */
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* במסכים קטנים – להקטין קצת את הלוגו */
+@media (max-width: 640px) {
+    .site-logo {
+        max-width: 260px;
+    }
+}
+
+/* ========================================
    Container
    ======================================== */
 
@@ -136,25 +165,6 @@ header h1 {
 /* ========================================
    Sections - Floating Cards
    ======================================== */
-/* לוגו באתר */
-.logo-wrapper {
-    display: flex;
-    justify-content: center;
-    margin-bottom: 1rem;
-}
-
-.site-logo {
-    max-width: 260px;   /* אפשר לשחק עם זה לפי גודל התמונה בפועל */
-    height: auto;
-    display: block;
-}
-
-/* במסכים קטנים – להקטין קצת את הלוגו */
-@media (max-width: 640px) {
-    .site-logo {
-        max-width: 210px;
-    }
-}
 
 section {
     background: var(--bg-card);
@@ -193,6 +203,7 @@ section h2::before {
 }
 
 /* Exercise Description */
+
 .exercise-description {
     background: linear-gradient(135deg,
             rgba(227, 242, 253, 0.5) 0%,
@@ -326,6 +337,7 @@ section h2::before {
 }
 
 /* Loading Indicator */
+
 .loading-indicator {
     display: inline-flex;
     align-items: center;
@@ -369,6 +381,7 @@ section h2::before {
 }
 
 /* Compilation Output */
+
 .compilation-result h3 {
     font-size: 1.0625rem;
     font-weight: 600;
@@ -393,7 +406,8 @@ section h2::before {
     box-shadow: var(--shadow-sm);
 }
 
-/* Score Panel - Sky Theme */
+/* Score Panel */
+
 .score-panel {
     text-align: center;
     padding: var(--space-12);
@@ -476,7 +490,7 @@ section h2::before {
 }
 
 /* ========================================
-   Clean Table Design
+   Test Results Table
    ======================================== */
 
 .test-results {
@@ -571,13 +585,14 @@ section h2::before {
 }
 
 /* ========================================
-   Footer - Copyright
+   Footer
    ======================================== */
 
 .footer {
     text-align: center;
     padding: var(--space-8) var(--space-4);
-    margin-top: var(--space-12);
+    margin: var(--space-12) auto var(--space-8);
+    max-width: 900px;
     background: linear-gradient(135deg,
             rgba(227, 242, 253, 0.6) 0%,
             rgba(255, 255, 255, 0.95) 100%);
@@ -599,7 +614,7 @@ section h2::before {
 }
 
 /* ========================================
-   Scrollbar - Sky Blue
+   Scrollbar & Misc
    ======================================== */
 
 ::-webkit-scrollbar {
@@ -621,10 +636,6 @@ section h2::before {
 ::-webkit-scrollbar-thumb:hover {
     background: var(--sky-blue);
 }
-
-/* ========================================
-   Responsive
-   ======================================== */
 
 @media (max-width: 768px) {
     .container {
@@ -667,38 +678,3 @@ section h2::before {
 html {
     scroll-behavior: smooth;
 }
-
-/* ========================================
-   Footer - Copyright
-   ======================================== */
-
-.footer {
-    text-align: center;
-    padding: var(--space-8) var(--space-4);
-    margin-top: var(--space-12);
-    background: linear-gradient(135deg,
-            rgba(227, 242, 253, 0.6) 0%,
-            rgba(255, 255, 255, 0.95) 100%);
-    backdrop-filter: blur(10px);
-    border: 2px solid var(--border-light);
-    border-radius: var(--radius-lg);
-    box-shadow: var(--shadow-sm);
-}
-
-.footer-top {
-    margin-top: 0;
-    margin-bottom: var(--space-10);
-    padding: var(--space-5) var(--space-4);
-}
-
-.footer p {
-    color: var(--text-secondary);
-    font-size: 0.9375rem;
-    font-weight: 500;
-    margin: 0;
-    background: linear-gradient(135deg, var(--sky-blue-darker) 0%, var(--ocean-blue) 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-}
-
