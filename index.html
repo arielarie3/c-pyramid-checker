@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="he" dir="rtl">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,12 +8,13 @@
     <title>בודק אוטומטי - תרגיל פירמידה ב-C</title>
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
     <div class="container">
         <header>
-            
+            <h1> בודק אוטומטי לתרגיל ב-C</h1>
             <p class="subtitle">העלה את הקוד שלך וקבל ציון ומשוב מיידי</p>
-        </header>
+        </header>        
 
         <section class="exercise-description">
             <h2>תיאור התרגיל</h2>
@@ -20,9 +22,11 @@
                 <p><strong>המטרה:</strong> כתוב תוכנית ב-C שמדפיסה פירמידה של כוכביות.</p>
                 <ul>
                     <li>התוכנית קוראת מספר שלם חיובי מהמשתמש</li>
-                    <li>אם המספר אינו חיובי (≤ 0), התוכנית מבקשת קלט חדש (חוזר עד שמקבלים מספר חיובי)</li>
-                    <li>לאחר קבלת מספר תקין n, התוכנית מדפיסה פירמידה בת n שורות</li>
-                    <li>בשורה i (מבוסס 1): יהיו (n - i) רווחים מובילים, ואחריהם i כוכביות מופרדות ברווח אחד</li>
+                    <li>אם המספר אינו חיובי , התוכנית מבקשת קלט חדש (חוזר עד שמקבלים מספר חיובי)</li>
+                    <li>לאחר קבלת מספר תקין התוכנית תדפיס פירמידה סימטרית </li>
+                    <li>גובה הפרירמידה יהיה שווה למספר שהמשתמש הקליד</li>
+                    <li>מספר הכוכביות בשורה האחרונה יהיה שווה למספר שהמשתמש הקליד</li>
+
                 </ul>
                 <div class="example">
                     <strong>דוגמה עבור קלט 4:</strong>
@@ -55,7 +59,7 @@ int main() {
 
         <section id="resultsSection" class="results-section hidden">
             <h2>תוצאות הבדיקה</h2>
-            
+
             <div id="compilationResult" class="compilation-result">
                 <h3>תוצאת קומפילציה</h3>
                 <div id="compilationOutput" class="output-box"></div>
@@ -86,11 +90,13 @@ int main() {
                 </table>
             </div>
         </section>
+
+
     </div>
 
-   <!-- JSCPP C++ Interpreter Library -->
-<script src="https://cdn.jsdelivr.net/npm/JSCPP@2.0.6/dist/JSCPP.es5.min.js"></script>
-<script src="script.js"></script>
-
+    <!-- JSCPP C++ Interpreter Library v2.0.6 -->
+    <script src="https://cdn.jsdelivr.net/npm/JSCPP@2.0.6/dist/JSCPP.es5.min.js"></script>
+    <script src="script.js"></script>
 </body>
+
 </html>
