@@ -136,6 +136,25 @@ header h1 {
 /* ========================================
    Sections - Floating Cards
    ======================================== */
+/* לוגו באתר */
+.logo-wrapper {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 1rem;
+}
+
+.site-logo {
+    max-width: 260px;   /* אפשר לשחק עם זה לפי גודל התמונה בפועל */
+    height: auto;
+    display: block;
+}
+
+/* במסכים קטנים – להקטין קצת את הלוגו */
+@media (max-width: 640px) {
+    .site-logo {
+        max-width: 210px;
+    }
+}
 
 section {
     background: var(--bg-card);
@@ -682,3 +701,4 @@ html {
     -webkit-text-fill-color: transparent;
     background-clip: text;
 }
+
