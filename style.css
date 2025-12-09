@@ -555,7 +555,7 @@ section h2::before {
    Footer - Copyright
    ======================================== */
 
-..footer {
+.footer {
     text-align: center;
     padding: var(--space-8) var(--space-4);
     margin-top: var(--space-12);
@@ -690,4 +690,5 @@ html {
     -webkit-text-fill-color: transparent;
     background-clip: text;
 }
+
 
