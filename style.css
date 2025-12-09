@@ -576,6 +576,7 @@ section h2::before {
     box-shadow: var(--shadow-sm);
 }
 
+
 .footer p {
     color: var(--text-secondary);
     font-size: 0.9375rem;
@@ -690,5 +691,6 @@ html {
     -webkit-text-fill-color: transparent;
     background-clip: text;
 }
+
 
 
