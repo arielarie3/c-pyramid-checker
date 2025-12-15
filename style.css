@@ -264,7 +264,6 @@ section h2::before {
 
 .actions {
     text-align: center;
-    margin: var(--space-10) 0;
 }
 
 .run-button {
@@ -716,4 +715,5 @@ section h2::before {
     background: rgba(168, 85, 247, 0.3);
     color: #111827;
 }
+
 
