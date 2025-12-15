@@ -513,3 +513,25 @@ function displayError(errorMessage) {
         resultsSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }, 100);
 }
+
+// ========================================
+// Welcome Modal Logic – הצגה בכל ריענון
+// ========================================
+
+document.addEventListener('DOMContentLoaded', function () {
+    const modal = document.getElementById('welcomeModal');
+    const btn = document.getElementById('enterAppButton');
+
+    if (!modal || !btn) return;
+
+    // ודא שהמודל מוצג כברירת מחדל בכל טעינה
+    modal.classList.remove('hidden-modal');
+
+    btn.addEventListener('click', function (e) {
+        e.preventDefault();
+        e.stopPropagation();
+
+        // סגירת המודל (בטעינה הבאה שוב יופיע)
+        modal.classList.add('hidden-modal');
+    });
+});
