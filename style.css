@@ -526,6 +526,7 @@ section h2::before {
     border-top: 1px solid rgba(209, 213, 219, 0.9);
     border-bottom: 1px solid rgba(209, 213, 219, 0.9);
     background: linear-gradient(135deg, #faf5ff, #f3e8ff);
+    margin: 0 auto;
 }
 
 .footer-top {
@@ -715,5 +716,6 @@ section h2::before {
     background: rgba(168, 85, 247, 0.3);
     color: #111827;
 }
+
 
 
