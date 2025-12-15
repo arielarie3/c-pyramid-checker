@@ -240,12 +240,25 @@ function extractPyramidLines(stdout) {
     const lines = stdout.split('\n');
     const pyramidLines = [];
 
-    for (let line of lines) {
-        if (line.includes('*')) {
-            line = line.replace(/\t/g, ' ');
-            line = line.replace(/\s+$/, ''); // הורדת רווחים בסוף
-            pyramidLines.push(line);
-        }
+    for (let rawLine of lines) {
+        if (!rawLine) continue;
+
+        // איחוד פורמט – החלפת טאבים ברווחים
+        let line = rawLine.replace(/\r/g, '').replace(/\t/g, ' ');
+
+        // רק שורות שמכילות כוכביות בכלל
+        if (!line.includes('*')) continue;
+
+        const trimmed = line.trim();
+        if (!trimmed) continue;
+
+        // שורה של פירמידה אמורה להכיל רק כוכביות ורווחים
+        if (!/^[* ]+$/.test(trimmed)) continue;
+
+        // הסרה של רווחים מסוף השורה
+        line = line.replace(/\s+$/, '');
+
+        pyramidLines.push(line);
     }
 
     return pyramidLines;
@@ -321,9 +334,11 @@ function calculateScore(testResults, codeSource) {
         return sum + (test.passed ? (test.points || 0) : 0);
     }, 0);
 
+    // 70% פונקציונליות (כל הבדיקות)
     const functionalScore = totalPoints > 0 ? (earnedPoints / totalPoints) * 70 : 0;
     score += functionalScore;
 
+    // 20% – מעבר על בדיקות תקינות (קלטים שגויים)
     const validationTests = testResults.filter(t => t.isValidationTest);
     const passedValidation = validationTests.filter(t => t.passed).length;
     const validationScore = validationTests.length > 0
@@ -331,6 +346,7 @@ function calculateScore(testResults, codeSource) {
         : 0;
     score += validationScore;
 
+    // 10% – איכות קוד
     let qualityScore = 10;
 
     const hasLoop = /\b(for|while|do)\b/.test(codeSource);
@@ -338,8 +354,11 @@ function calculateScore(testResults, codeSource) {
         qualityScore -= 5;
     }
 
-    const hasHardcoded = /"\s*\*\s*\*\s*\*"/.test(codeSource) ||
-        /'(\s*\*\s*)+\*'/.test(codeSource);
+    // ניסיון לזהות "הקשחה" עם שורות מודפסות מוכנות של כוכביות
+    const hasHardcoded =
+        /"[^"\n]*\*[^"\n]*\*[^"\n]*"/.test(codeSource) ||
+        /'[^'\n]*\*[^'\n]*\*[^'\n]*'/.test(codeSource);
+
     if (hasHardcoded) {
         qualityScore -= 5;
     }
@@ -368,29 +387,29 @@ function generateFeedback(testResults, score) {
         !t.passed && t.notes && t.notes.includes('רווחים מובילים')
     );
     if (hasAlignmentIssue) {
-        feedback.push('יש בעיות במספר הרווחים המובילים (ייצור הפירמידה).');
+        feedback.push('יש בעיות במספר הרווחים המובילים (יישור הפירמידה).');
     }
 
     const hasStarIssue = testResults.some(t =>
         !t.passed && t.notes && t.notes.includes('כוכביות')
     );
     if (hasStarIssue) {
-        feedback.push('יש בעיות במספר או במיקום הכוכביות.');
+        feedback.push('יש בעיות במספר או במיקום הכוכביות בכל שורה.');
     }
 
     const validationTests = testResults.filter(t => t.isValidationTest);
     const failedValidation = validationTests.some(t => !t.passed);
     if (failedValidation) {
-        feedback.push('התוכנית לא ממשיכה לבקש קלט כאשר המשתמש מזין מספר לא חיובי.');
+        feedback.push('נראה שהתוכנית לא מטפלת בצורה מלאה בקלטים שאינם חיוביים (0 או שליליים). ודא שאתה חוזר לבקש מספר עד לקלט חיובי.');
     }
 
     if (feedback.length === 0) {
         if (score >= 80) {
-            return 'עבודה טובה! יש כמה בעיות קטנות לתקן.';
+            return 'עבודה טובה! יש כמה בעיות קטנות לתקן – בדוק את פירוט מקרי הבדיקה.';
         } else if (score >= 60) {
-            return 'יש התקדמות, אבל חלק מהבדיקות נכשלו. בדוק את הפרטים בטבלה.';
+            return 'יש התקדמות יפה, אבל חלק מהבדיקות נכשלו. מומלץ לבדוק את יישור הפירמידה ומספר הכוכביות בכל שורה.';
         } else {
-            return 'הקוד זקוק לעבודה נוספת. בדוק את מקרי הבדיקה שנכשלו.';
+            return 'הקוד זקוק לעבודה נוספת. בדוק את לוגיקת הלולאה, הטיפול בקלטים לא תקינים והמבנה של הפירמידה.';
         }
     }
 
