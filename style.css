@@ -1,5 +1,5 @@
 /* ========================================
-   Sky Blue Minimalist Design
+   Base Reset & Variables
    ======================================== */
 
 * {
@@ -9,48 +9,45 @@
 }
 
 :root {
-    /* Sky Blue Palette - Light & Airy */
-    --sky-blue: #4FC3F7;
-    --sky-blue-light: #81D4FA;
-    --sky-blue-lighter: #B3E5FC;
-    --sky-blue-dark: #29B6F6;
-    --sky-blue-darker: #039BE5;
+    /* Light Sky / Mint Palette */
+    --sky-light: #f5f9ff;
+    --sky-lighter: #f8fbff;
+    --sky-accent: #9ac9ff;
+    --sky-accent-strong: #6aa9ff;
 
-    --ocean-blue: #00ACC1;
-    --ocean-blue-light: #26C6DA;
+    --mint-soft: #e6fff7;
+    --mint-accent: #8be4c4;
 
-    --success: #00C853;
-    --success-light: #69F0AE;
-    --error: #F44336;
-    --warning: #FFA726;
+    --white: #ffffff;
 
-    /* Light Neutrals */
-    --white: #FFFFFF;
-    --gray-50: #FAFAFA;
-    --gray-100: #F5F5F5;
-    --gray-200: #EEEEEE;
-    --gray-300: #E0E0E0;
-    --gray-400: #BDBDBD;
-    --gray-500: #9E9E9E;
-    --gray-600: #757575;
-    --gray-700: #616161;
-    --gray-800: #424242;
-    --gray-900: #212121;
-
-    /* Background - Sky Theme */
-    --bg-sky: linear-gradient(180deg, #E3F2FD 0%, #FFFFFF 100%);
-    --bg-card: rgba(255, 255, 255, 0.95);
-    --bg-card-hover: rgba(255, 255, 255, 1);
+    --gray-50: #fafafa;
+    --gray-100: #f1f5f9;
+    --gray-200: #e2e8f0;
+    --gray-300: #cbd5f5;
+    --gray-400: #94a3b8;
+    --gray-600: #475569;
+    --gray-800: #1e293b;
 
     /* Text */
-    --text-primary: #263238;
-    --text-secondary: #546E7A;
-    --text-muted: #90A4AE;
+    --text-primary: #1e293b;
+    --text-secondary: #64748b;
+    --text-muted: #94a3b8;
 
-    /* Borders */
-    --border-light: rgba(79, 195, 247, 0.15);
-    --border: rgba(79, 195, 247, 0.25);
-    --border-strong: rgba(79, 195, 247, 0.4);
+    /* Accent / Feedback */
+    --success: #22c55e;
+    --warning: #f97316;
+    --error: #ef4444;
+
+    /* Radius */
+    --radius-sm: 8px;
+    --radius-md: 12px;
+    --radius-lg: 18px;
+    --radius-xl: 26px;
+    --radius-pill: 999px;
+
+    /* Shadows */
+    --shadow-soft: 0 10px 30px rgba(148, 163, 184, 0.18);
+    --shadow-strong: 0 18px 45px rgba(148, 163, 184, 0.28);
 
     /* Spacing */
     --space-1: 0.25rem;
@@ -62,30 +59,18 @@
     --space-8: 2rem;
     --space-10: 2.5rem;
     --space-12: 3rem;
+}
 
-    /* Typography */
-    --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-    --font-mono: "SF Mono", Consolas, "Monaco", "Courier New", monospace;
-
-    /* Radius */
-    --radius-sm: 8px;
-    --radius-md: 12px;
-    --radius-lg: 16px;
-    --radius-xl: 24px;
-
-    /* Shadows - Soft & Light */
-    --shadow-sm: 0 2px 8px rgba(79, 195, 247, 0.1);
-    --shadow-md: 0 4px 16px rgba(79, 195, 247, 0.15);
-    --shadow-lg: 0 8px 32px rgba(79, 195, 247, 0.2);
+html {
+    scroll-behavior: smooth;
 }
 
 body {
-    font-family: var(--font-sans);
-    background: var(--bg-sky);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    background: radial-gradient(circle at top, #fdfbff 0, var(--sky-light) 45%, #ffffff 100%);
     color: var(--text-primary);
     line-height: 1.6;
     -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
     min-height: 100vh;
 }
 
@@ -96,70 +81,97 @@ body {
 .container {
     max-width: 1100px;
     margin: 0 auto;
-    padding: var(--space-10) var(--space-4);
+    padding: var(--space-10) var(--space-4) var(--space-8);
 }
 
 /* ========================================
-   Header - Sky Gradient
+   Header
    ======================================== */
 
 header {
-    background: linear-gradient(135deg,
-            rgba(227, 242, 253, 0.8) 0%,
-            rgba(255, 255, 255, 0.95) 100%);
-    backdrop-filter: blur(10px);
-    border: 2px solid var(--border);
+    background: linear-gradient(135deg, #ffffff, #eef4ff);
     border-radius: var(--radius-xl);
     padding: var(--space-12) var(--space-10);
     margin-bottom: var(--space-10);
+    box-shadow: var(--shadow-soft);
+    border: 1px solid rgba(148, 163, 184, 0.18);
     text-align: center;
-    box-shadow: var(--shadow-md);
+    position: relative;
+    overflow: hidden;
+}
+
+/* “בועות” בהירות ברקע הכותרת */
+header::before,
+header::after {
+    content: '';
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(18px);
+    opacity: 0.45;
+    pointer-events: none;
+}
+
+header::before {
+    width: 140px;
+    height: 140px;
+    background: radial-gradient(circle, #dbeafe 0, transparent 60%);
+    top: -40px;
+    left: -30px;
+}
+
+header::after {
+    width: 160px;
+    height: 160px;
+    background: radial-gradient(circle, #ccfbf1 0, transparent 60%);
+    bottom: -50px;
+    right: -10px;
 }
 
 header h1 {
-    font-size: 2.25rem;
+    font-size: 2.15rem;
     font-weight: 700;
-    background: linear-gradient(135deg, var(--sky-blue-darker) 0%, var(--ocean-blue) 100%);
+    letter-spacing: -0.03em;
+    background: linear-gradient(135deg, #0ea5e9, #22c55e);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    background-clip: text;
+    position: relative;
+    z-index: 1;
     margin-bottom: var(--space-3);
-    letter-spacing: -0.02em;
 }
 
 .subtitle {
-    font-size: 1.0625rem;
+    font-size: 1.05rem;
     color: var(--text-secondary);
-    font-weight: 400;
+    position: relative;
+    z-index: 1;
 }
 
 /* ========================================
-   Sections - Floating Cards
+   Sections (Cards)
    ======================================== */
 
 section {
-    background: var(--bg-card);
-    backdrop-filter: blur(10px);
-    border: 2px solid var(--border-light);
+    background: var(--white);
     border-radius: var(--radius-lg);
     padding: var(--space-10);
     margin-bottom: var(--space-8);
-    box-shadow: var(--shadow-sm);
-    transition: all 0.3s ease;
+    box-shadow: var(--shadow-soft);
+    border: 1px solid rgba(148, 163, 184, 0.14);
+    backdrop-filter: blur(10px);
+    transition: transform 0.22s ease, box-shadow 0.22s ease, border-color 0.22s ease;
 }
 
 section:hover {
-    border-color: var(--border);
-    box-shadow: var(--shadow-md);
     transform: translateY(-2px);
+    box-shadow: var(--shadow-strong);
+    border-color: rgba(129, 140, 248, 0.32);
 }
 
 section h2 {
-    font-size: 1.375rem;
+    font-size: 1.35rem;
     font-weight: 600;
-    color: var(--sky-blue-darker);
+    color: #2563eb;
     margin-bottom: var(--space-8);
-    letter-spacing: -0.01em;
     display: flex;
     align-items: center;
     gap: var(--space-3);
@@ -167,21 +179,15 @@ section h2 {
 
 section h2::before {
     content: '';
-    width: 4px;
-    height: 28px;
-    background: linear-gradient(180deg, var(--sky-blue) 0%, var(--ocean-blue) 100%);
-    border-radius: 2px;
+    width: 5px;
+    height: 26px;
+    border-radius: 999px;
+    background: linear-gradient(180deg, #38bdf8, #22c55e);
 }
 
-/* Exercise Description */
+/* תיאור התרגיל */
 .exercise-description {
-    background: linear-gradient(135deg,
-            rgba(227, 242, 253, 0.5) 0%,
-            rgba(255, 255, 255, 0.95) 100%);
-}
-
-.description-content p {
-    color: var(--text-primary);
+    background: linear-gradient(135deg, #ffffff, #f3f7ff);
 }
 
 .description-content ul {
@@ -192,79 +198,68 @@ section h2::before {
 
 .description-content li {
     margin-bottom: var(--space-4);
-    line-height: 1.7;
 }
 
+/* דוגמה */
 .example {
     margin-top: var(--space-8);
     padding: var(--space-6);
-    background: var(--gray-900);
+    background: #0f172a;
     border-radius: var(--radius-md);
-    border: 2px solid var(--gray-800);
-    box-shadow: var(--shadow-sm);
+    border: 1px solid rgba(148, 163, 184, 0.7);
+    box-shadow: 0 14px 35px rgba(15, 23, 42, 0.65);
 }
 
 .example strong {
-    color: var(--sky-blue-light);
-    display: block;
-    margin-bottom: var(--space-4);
-    font-size: 0.8125rem;
+    color: #bfdbfe;
+    font-size: 0.85rem;
+    letter-spacing: 0.08em;
     text-transform: uppercase;
-    letter-spacing: 0.1em;
-    font-weight: 600;
+    display: block;
+    margin-bottom: var(--space-3);
 }
 
 .example pre {
-    font-family: var(--font-mono);
-    color: #E8F5E9;
-    font-size: 0.9375rem;
-    direction: ltr;
-    text-align: left;
+    font-family: "SF Mono", Consolas, "Courier New", monospace;
+    font-size: 0.95rem;
+    color: #e5f6ff;
     line-height: 1.7;
 }
 
 /* ========================================
-   Code Editor - Clean Terminal
+   Code Editor
    ======================================== */
 
 .code-editor-section {
-    background: linear-gradient(135deg,
-            rgba(255, 255, 255, 0.95) 0%,
-            rgba(227, 242, 253, 0.5) 100%);
+    background: linear-gradient(135deg, #ffffff, #f0f7ff);
 }
 
 #codeEditor {
     width: 100%;
     min-height: 420px;
     padding: var(--space-6);
-    font-family: var(--font-mono);
+    font-family: "SF Mono", Consolas, "Courier New", monospace;
     font-size: 14.5px;
-    line-height: 1.7;
-    background: var(--gray-900);
-    color: #E8F5E9;
-    border: 2px solid var(--border);
     border-radius: var(--radius-md);
+    border: 1px solid rgba(148, 163, 184, 0.4);
+    background: #020817;
+    color: #e5f6ff;
     resize: vertical;
-    direction: ltr;
-    text-align: left;
-    transition: all 0.3s ease;
     outline: none;
-    box-shadow: var(--shadow-sm);
+    box-shadow: 0 18px 40px rgba(15, 23, 42, 0.6);
+    transition: box-shadow 0.22s ease, border-color 0.22s ease, transform 0.15s ease;
 }
 
 #codeEditor:focus {
-    border-color: var(--sky-blue);
+    border-color: #38bdf8;
     box-shadow:
-        var(--shadow-md),
-        0 0 0 4px rgba(79, 195, 247, 0.1);
-}
-
-#codeEditor::placeholder {
-    color: var(--gray-600);
+        0 22px 45px rgba(15, 23, 42, 0.75),
+        0 0 0 3px rgba(56, 189, 248, 0.45);
+    transform: translateY(-1px);
 }
 
 /* ========================================
-   Sky Blue Button
+   Button & Actions
    ======================================== */
 
 .actions {
@@ -273,46 +268,50 @@ section h2::before {
 }
 
 .run-button {
-    background: linear-gradient(135deg, var(--sky-blue) 0%, var(--ocean-blue) 100%);
-    color: white;
+    background: radial-gradient(circle at top left, #38bdf8, #22c55e);
+    color: #ffffff;
     border: none;
     padding: var(--space-5) var(--space-12);
-    font-size: 1.0625rem;
+    font-size: 1.03rem;
     font-weight: 600;
-    border-radius: var(--radius-md);
+    border-radius: var(--radius-pill);
     cursor: pointer;
-    transition: all 0.3s ease;
     box-shadow:
-        var(--shadow-sm),
-        0 4px 16px rgba(79, 195, 247, 0.3);
+        0 14px 35px rgba(52, 211, 153, 0.6),
+        0 0 18px rgba(56, 189, 248, 0.5);
     letter-spacing: -0.01em;
+    transition: transform 0.16s ease, box-shadow 0.16s ease, filter 0.16s ease;
 }
 
 .run-button:hover:not(:disabled) {
-    transform: translateY(-2px);
+    transform: translateY(-2px) scale(1.01);
+    filter: brightness(1.03);
     box-shadow:
-        var(--shadow-md),
-        0 8px 24px rgba(79, 195, 247, 0.4);
+        0 18px 45px rgba(56, 189, 248, 0.75),
+        0 0 22px rgba(45, 212, 191, 0.9);
 }
 
 .run-button:active:not(:disabled) {
-    transform: translateY(0);
+    transform: translateY(0) scale(0.99);
+    box-shadow:
+        0 10px 28px rgba(15, 23, 42, 0.45);
 }
 
 .run-button:disabled {
-    background: var(--gray-300);
-    color: var(--gray-500);
-    cursor: not-allowed;
+    background: #e2e8f0;
+    color: #94a3b8;
     box-shadow: none;
+    cursor: not-allowed;
 }
 
 /* Loading Indicator */
+
 .loading-indicator {
     display: inline-flex;
     align-items: center;
     gap: var(--space-3);
     margin-top: var(--space-5);
-    font-size: 0.9375rem;
+    font-size: 0.93rem;
     color: var(--text-muted);
 }
 
@@ -323,16 +322,14 @@ section h2::before {
 .spinner {
     width: 22px;
     height: 22px;
-    border: 2.5px solid var(--gray-300);
-    border-top-color: var(--sky-blue);
-    border-radius: 50%;
-    animation: spin 0.7s linear infinite;
+    border-radius: 999px;
+    border: 2.5px solid #e2e8f0;
+    border-top-color: #38bdf8;
+    animation: spin 0.75s linear infinite;
 }
 
 @keyframes spin {
-    to {
-        transform: rotate(360deg);
-    }
+    to { transform: rotate(360deg); }
 }
 
 /* ========================================
@@ -344,164 +341,143 @@ section h2::before {
 }
 
 .results-section {
-    background: linear-gradient(135deg,
-            rgba(255, 255, 255, 0.98) 0%,
-            rgba(227, 242, 253, 0.6) 100%);
+    background: linear-gradient(135deg, #ffffff, #f3f8ff);
 }
 
-/* Compilation Output */
 .compilation-result h3 {
-    font-size: 1.0625rem;
-    font-weight: 600;
-    margin-bottom: var(--space-4);
-    color: var(--sky-blue-darker);
+    font-size: 1.02rem;
+    margin-bottom: var(--space-3);
+    color: #2563eb;
 }
 
 .output-box {
     padding: var(--space-5);
-    background: var(--gray-900);
-    color: #E8F5E9;
-    font-family: var(--font-mono);
-    font-size: 0.875rem;
+    background: #020617;
+    color: #e5f6ff;
     border-radius: var(--radius-md);
-    direction: ltr;
-    text-align: left;
-    white-space: pre-wrap;
-    word-wrap: break-word;
+    font-family: "SF Mono", Consolas, "Courier New", monospace;
+    font-size: 0.9rem;
     max-height: 220px;
     overflow-y: auto;
-    border: 2px solid var(--border-light);
-    box-shadow: var(--shadow-sm);
+    border: 1px solid rgba(15, 23, 42, 0.7);
+    box-shadow: 0 16px 38px rgba(15, 23, 42, 0.75);
 }
 
-/* Score Panel - Sky Theme */
+/* Score Panel */
+
 .score-panel {
     text-align: center;
     padding: var(--space-12);
     margin: var(--space-10) 0;
-    background: linear-gradient(135deg,
-            rgba(227, 242, 253, 0.6) 0%,
-            rgba(255, 255, 255, 0.95) 100%);
-    backdrop-filter: blur(10px);
     border-radius: var(--radius-xl);
-    border: 2px solid var(--border);
-    box-shadow: var(--shadow-lg);
+    background: radial-gradient(circle at top, #eef2ff 0, #ffffff 60%, #f0f9ff 100%);
+    border: 1px solid rgba(129, 140, 248, 0.45);
+    box-shadow: 0 20px 55px rgba(129, 140, 248, 0.45);
+    position: relative;
+    overflow: hidden;
+}
+
+/* הילה קלה */
+.score-panel::before {
+    content: '';
+    position: absolute;
+    inset: -40%;
+    background: radial-gradient(circle, rgba(129, 140, 248, 0.25), transparent 60%);
+    opacity: 0.5;
+    pointer-events: none;
 }
 
 .score-circle {
+    position: relative;
+    z-index: 1;
     display: inline-flex;
     align-items: baseline;
     gap: var(--space-2);
-    margin-bottom: var(--space-6);
+    margin-bottom: var(--space-5);
 }
 
 #scoreValue {
-    font-size: 4.5rem;
+    font-size: 4.2rem;
     font-weight: 800;
-    line-height: 1;
-    letter-spacing: -0.03em;
+    letter-spacing: -0.06em;
     color: var(--text-primary);
 }
 
-.score-circle.excellent #scoreValue {
-    background: linear-gradient(135deg, var(--success) 0%, #00E676 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-}
-
-.score-circle.good #scoreValue {
-    background: linear-gradient(135deg, var(--warning) 0%, #FFB74D 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-}
-
-.score-circle.poor #scoreValue {
-    background: linear-gradient(135deg, var(--error) 0%, #E57373 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-}
-
 .score-max {
-    font-size: 1.75rem;
-    font-weight: 600;
+    font-size: 1.6rem;
     color: var(--text-muted);
 }
 
 .score-feedback {
-    font-size: 1.0625rem;
-    margin-top: var(--space-5);
-    padding: var(--space-5) var(--space-8);
+    position: relative;
+    z-index: 1;
+    margin-top: var(--space-4);
+    padding: var(--space-4) var(--space-6);
     border-radius: var(--radius-md);
+    font-size: 1rem;
     font-weight: 500;
+    color: var(--text-secondary);
+    background: rgba(248, 250, 252, 0.85);
+    border: 1px solid rgba(148, 163, 184, 0.35);
 }
 
 .score-feedback.excellent {
-    background: rgba(0, 200, 83, 0.1);
-    color: #00C853;
-    border: 2px solid rgba(0, 200, 83, 0.3);
+    background: rgba(220, 252, 231, 0.9);
+    border-color: rgba(34, 197, 94, 0.45);
+    color: #15803d;
 }
 
 .score-feedback.good {
-    background: rgba(255, 167, 38, 0.1);
-    color: #F57C00;
-    border: 2px solid rgba(255, 167, 38, 0.3);
+    background: rgba(255, 247, 237, 0.9);
+    border-color: rgba(249, 115, 22, 0.45);
+    color: #9a3412;
 }
 
 .score-feedback.poor {
-    background: rgba(244, 67, 54, 0.1);
-    color: #D32F2F;
-    border: 2px solid rgba(244, 67, 54, 0.3);
+    background: rgba(254, 242, 242, 0.9);
+    border-color: rgba(239, 68, 68, 0.45);
+    color: #b91c1c;
 }
 
 /* ========================================
-   Clean Table Design
+   Test Results Table
    ======================================== */
 
 .test-results {
-    margin-top: var(--space-10);
+    margin-top: var(--space-8);
 }
 
 .test-results h3 {
-    font-size: 1.0625rem;
-    font-weight: 600;
-    margin-bottom: var(--space-6);
-    color: var(--sky-blue-darker);
+    font-size: 1.02rem;
+    margin-bottom: var(--space-4);
+    color: #2563eb;
 }
 
 #testResultsTable {
     width: 100%;
     border-collapse: separate;
     border-spacing: 0;
-    font-size: 0.9375rem;
-    border: 2px solid var(--border-light);
+    background: #ffffff;
     border-radius: var(--radius-md);
     overflow: hidden;
-    background: white;
-    box-shadow: var(--shadow-sm);
+    border: 1px solid rgba(148, 163, 184, 0.35);
+    box-shadow: var(--shadow-soft);
+    font-size: 0.9rem;
 }
 
 #testResultsTable th {
-    background: linear-gradient(180deg,
-            rgba(227, 242, 253, 0.8) 0%,
-            rgba(227, 242, 253, 0.5) 100%);
-    color: var(--sky-blue-darker);
+    background: linear-gradient(180deg, #e0edff, #f3f7ff);
     padding: var(--space-4) var(--space-5);
     text-align: right;
+    color: #1d4ed8;
     font-weight: 600;
-    border-bottom: 2px solid var(--border);
-    font-size: 0.8125rem;
     text-transform: uppercase;
-    letter-spacing: 0.08em;
+    letter-spacing: 0.09em;
 }
 
 #testResultsTable td {
-    padding: var(--space-5);
-    border-bottom: 1px solid var(--border-light);
-    text-align: right;
-    background: white;
+    padding: var(--space-4) var(--space-5);
+    border-bottom: 1px solid rgba(226, 232, 240, 0.9);
     color: var(--text-secondary);
 }
 
@@ -509,16 +485,8 @@ section h2::before {
     border-bottom: none;
 }
 
-#testResultsTable tbody tr {
-    transition: all 0.2s ease;
-}
-
 #testResultsTable tbody tr:hover {
-    background: rgba(227, 242, 253, 0.3);
-}
-
-#testResultsTable tbody tr:hover td {
-    background: transparent;
+    background: #f8fafc;
 }
 
 .test-status {
@@ -535,61 +503,50 @@ section h2::before {
 }
 
 .test-input {
-    font-family: var(--font-mono);
-    background: var(--gray-100);
+    font-family: "SF Mono", Consolas, "Courier New", monospace;
+    background: #eff6ff;
     padding: var(--space-2) var(--space-4);
     border-radius: var(--radius-sm);
-    font-size: 0.8125rem;
-    direction: ltr;
-    display: inline-block;
-    border: 1px solid var(--gray-300);
-    color: var(--text-primary);
+    border: 1px solid rgba(129, 140, 248, 0.45);
+    color: #1e3a8a;
 }
 
 .test-notes {
-    font-size: 0.875rem;
+    font-size: 0.87rem;
     color: var(--text-muted);
 }
 
 /* ========================================
-   Footer - Copyright
+   Footer
    ======================================== */
 
 .footer {
     text-align: center;
-    padding: var(--space-8) var(--space-4);
-    margin-top: var(--space-12);
-    background: linear-gradient(135deg,
-            rgba(227, 242, 253, 0.6) 0%,
-            rgba(255, 255, 255, 0.95) 100%);
-    backdrop-filter: blur(10px);
-
-    /* רק למעלה ולמטה מסגרת, בלי צדדים */
-    border-top: 2px solid var(--border-light);
-    border-bottom: 2px solid var(--border-light);
-    border-left: none;
-    border-right: none;
-
-    /* ביטול פינות מעוגלות */
-    border-radius: 0;
-
-    box-shadow: var(--shadow-sm);
+    padding: var(--space-6) var(--space-4);
+    margin: var(--space-10) auto var(--space-6);
+    max-width: 1100px;
+    border-top: 1px solid rgba(148, 163, 184, 0.35);
+    border-bottom: 1px solid rgba(148, 163, 184, 0.35);
+    background: linear-gradient(135deg, #f8fafc, #eff6ff);
 }
 
+.footer-top {
+    margin-top: 0;
+    margin-bottom: var(--space-6);
+    padding-top: var(--space-4);
+    padding-bottom: var(--space-4);
+}
 
 .footer p {
-    color: var(--text-secondary);
-    font-size: 0.9375rem;
+    font-size: 0.95rem;
     font-weight: 500;
-    margin: 0;
-    background: linear-gradient(135deg, var(--sky-blue-darker) 0%, var(--ocean-blue) 100%);
+    background: linear-gradient(135deg, #0ea5e9, #22c55e);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    background-clip: text;
 }
 
 /* ========================================
-   Scrollbar - Sky Blue
+   Scrollbar
    ======================================== */
 
 ::-webkit-scrollbar {
@@ -598,27 +555,24 @@ section h2::before {
 }
 
 ::-webkit-scrollbar-track {
-    background: var(--gray-100);
-    border-radius: 5px;
+    background: #e5e7eb;
+    border-radius: 999px;
 }
 
 ::-webkit-scrollbar-thumb {
-    background: var(--sky-blue-light);
-    border-radius: 5px;
-    border: 2px solid var(--gray-100);
+    background: #cbd5f5;
+    border-radius: 999px;
+    border: 2px solid #e5e7eb;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-    background: var(--sky-blue);
+    background: #a5b4fc;
 }
 
-/* ========================================
-   Responsive
-   ======================================== */
-
+/* Mobile tweaks */
 @media (max-width: 768px) {
     .container {
-        padding: var(--space-6) var(--space-3);
+        padding: var(--space-8) var(--space-3);
     }
 
     header {
@@ -626,7 +580,7 @@ section h2::before {
     }
 
     header h1 {
-        font-size: 1.75rem;
+        font-size: 1.85rem;
     }
 
     section {
@@ -643,54 +597,12 @@ section h2::before {
     }
 
     #scoreValue {
-        font-size: 3.5rem;
+        font-size: 3.4rem;
     }
 }
 
-/* Selection - Sky Blue */
+/* Text selection */
 ::selection {
-    background: rgba(79, 195, 247, 0.3);
-    color: var(--text-primary);
+    background: rgba(56, 189, 248, 0.3);
+    color: #0f172a;
 }
-
-/* Smooth Scroll */
-html {
-    scroll-behavior: smooth;
-}
-
-/* ========================================
-   Footer - Copyright
-   ======================================== */
-
-.footer {
-    text-align: center;
-    padding: var(--space-8) var(--space-4);
-    margin-top: var(--space-12);
-    background: linear-gradient(135deg,
-            rgba(227, 242, 253, 0.6) 0%,
-            rgba(255, 255, 255, 0.95) 100%);
-    backdrop-filter: blur(10px);
-    border: 2px solid var(--border-light);
-    border-radius: var(--radius-lg);
-    box-shadow: var(--shadow-sm);
-}
-
-.footer-top {
-    margin-top: 0;
-    margin-bottom: var(--space-10);
-    padding: var(--space-5) var(--space-4);
-}
-
-.footer p {
-    color: var(--text-secondary);
-    font-size: 0.9375rem;
-    font-weight: 500;
-    margin: 0;
-    background: linear-gradient(135deg, var(--sky-blue-darker) 0%, var(--ocean-blue) 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-}
-
-
-
